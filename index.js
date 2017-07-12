@@ -20,7 +20,7 @@ restService.use(bodyParser.urlencoded({
 restService.use(bodyParser.json());
 
 restService.post('/mirror', function(req, res) {
-    var suggestion = [];
+   /* var suggestion = [];
     suggestion.push(
     {
         "title" : "Birthdays"
@@ -31,7 +31,7 @@ restService.post('/mirror', function(req, res) {
     {
         "title": "Wedding Anniversary"
     }
-    );
+    ); */
 
     var speech = req.body.result && req.body.result.action ? req.body.result.action : NO_INTENT
     if (speech.valueOf()== BIRTHDAYS.valueOf())
@@ -56,16 +56,16 @@ restService.post('/mirror', function(req, res) {
                     return res.json({
                         speech: finalString,
                         displayText: finalString,
-                        source: 'mirror-webhook-heroku',
-                        suggestions: suggestion
+                        source: 'mirror-webhook-heroku'
+                       // suggestions: suggestion
                     });
                 }
                 else {
                     return res.json({
                         speech: 'Welcome to birthday Intent',
                         displayText: 'Welcome to birthday Intent',
-                        source: 'mirror-webhook-heroku',
-                        suggestions: suggestion
+                        source: 'mirror-webhook-heroku'
+                        //suggestions: suggestion
                     });
                 }
             });
